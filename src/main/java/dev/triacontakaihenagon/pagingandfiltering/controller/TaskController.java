@@ -1,5 +1,6 @@
 package dev.triacontakaihenagon.pagingandfiltering.controller;
 
+import dev.triacontakaihenagon.pagingandfiltering.dto.TaskFilter;
 import dev.triacontakaihenagon.pagingandfiltering.dto.TaskResponse;
 import dev.triacontakaihenagon.pagingandfiltering.service.TaskService;
 import org.springframework.data.domain.Page;
@@ -18,7 +19,7 @@ public class TaskController {
     }
 
     @GetMapping
-    public Page<TaskResponse> list(Pageable pageable) {
-        return taskService.list(pageable);
+    public Page<TaskResponse> list(TaskFilter filter, Pageable pageable) {
+        return taskService.search(filter, pageable);
     }
 }
